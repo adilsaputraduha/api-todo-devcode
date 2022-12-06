@@ -156,7 +156,7 @@ module.exports = {
                         } else {
                             dataEdit = {
                                 is_active:
-                                    req.body.is_active === 1 ? true : false,
+                                    req.body.is_active === true ? 1 : 0,
                                 updated_at: new Date(),
                             };
                         }
@@ -167,11 +167,11 @@ module.exports = {
                             [dataEdit, id],
                             function (error, resultsUpdate) {
                                 if (error) throw error;
-                                let status = true;
-                                if (results[0].is_active === 1) {
-                                    status = true;
+                                let status;
+                                if (req.body.is_active === true) {
+                                    status = 1;
                                 } else {
-                                    status = false;
+                                    status = 0;
                                 }
                                 res.send({
                                     status: "Success",
@@ -183,9 +183,10 @@ module.exports = {
                                         title: req.body.title
                                             ? req.body.title
                                             : results[0].title,
-                                        is_active: req.body.is_active
-                                            ? req.body.is_active
-                                            : results[0].is_active,
+                                        is_active:
+                                            req.body.is_active === undefined
+                                                ? results[0].is_active
+                                                : status,
                                         priority: results[0].priority,
                                         created_at: results[0].created_at,
                                         updated_at: new Date(),
