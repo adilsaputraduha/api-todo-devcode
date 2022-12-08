@@ -1,14 +1,13 @@
-require("dotenv").config();
-const { MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DBNAME } = process.env;
-
-let HOST = MYSQL_HOST;
-let USER = MYSQL_USER;
-let PASS = MYSQL_PASSWORD;
-let DB = MYSQL_DBNAME;
+var HOST = process.env.MYSQL_HOST || "localhost";
+var PORT = process.env.MYSQL_PORT || "3306";
+var USER = process.env.MYSQL_USER || "root";
+var PASS = process.env.MYSQL_PASSWORD || "";
+var DB = process.env.MYSQL_DBNAME || "todo4";
 
 module.exports = {
     multipleStatements: true,
     host: HOST,
+    port: PORT,
     user: USER,
     password: PASS,
     database: DB,
