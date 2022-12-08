@@ -14,7 +14,7 @@ module.exports = {
                 if (err) throw err;
                 connection.query(
                     `
-                    SELECT * FROM todo;
+                    SELECT * FROM todos;
                     `,
                     function (error, results) {
                         if (error) throw error;
@@ -32,7 +32,7 @@ module.exports = {
                 if (err) throw err;
                 connection.query(
                     `
-                    SELECT * FROM todo WHERE activity_group_id = ?;
+                    SELECT * FROM todos WHERE activity_group_id = ?;
                     `,
                     [id],
                     function (error, results) {
@@ -54,7 +54,7 @@ module.exports = {
             if (err) throw err;
             connection.query(
                 `
-                SELECT * FROM todo WHERE id = ?;
+                SELECT * FROM todos WHERE id = ?;
                 `,
                 [id],
                 function (error, results) {
@@ -103,7 +103,7 @@ module.exports = {
                 if (err) throw err;
                 connection.query(
                     `
-                    INSERT INTO todo SET ?;
+                    INSERT INTO todos SET ?;
                     `,
                     [data],
                     function (error, results) {
@@ -135,7 +135,7 @@ module.exports = {
             if (err) throw err;
             connection.query(
                 `
-                    SELECT * FROM todo WHERE id = ?;
+                    SELECT * FROM todos WHERE id = ?;
                     `,
                 [id],
                 function (error, results) {
@@ -162,7 +162,7 @@ module.exports = {
                         }
                         connection.query(
                             `
-                            UPDATE todo SET ? WHERE id = ?;
+                            UPDATE todos SET ? WHERE id = ?;
                             `,
                             [dataEdit, id],
                             function (error, resultsUpdate) {
@@ -207,7 +207,7 @@ module.exports = {
             if (err) throw err;
             connection.query(
                 `
-                SELECT * FROM todo WHERE id = ?;
+                SELECT * FROM todos WHERE id = ?;
                 `,
                 [id],
                 function (error, results) {
@@ -221,7 +221,7 @@ module.exports = {
                     } else {
                         connection.query(
                             `
-                            DELETE FROM todo WHERE id = ?;
+                            DELETE FROM todos WHERE id = ?;
                             `,
                             [id],
                             function (error, results) {

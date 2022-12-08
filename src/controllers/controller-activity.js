@@ -12,7 +12,7 @@ module.exports = {
             if (err) throw err;
             connection.query(
                 `
-                SELECT * FROM activity;
+                SELECT * FROM activites;
                 `,
                 function (error, results) {
                     if (error) throw error;
@@ -32,7 +32,7 @@ module.exports = {
             if (err) throw err;
             connection.query(
                 `
-                SELECT * FROM activity WHERE id = ?;
+                SELECT * FROM activites WHERE id = ?;
                 `,
                 [id],
                 function (error, results) {
@@ -73,7 +73,7 @@ module.exports = {
                 if (err) throw err;
                 connection.query(
                     `
-                    INSERT INTO activity SET ?;
+                    INSERT INTO activites SET ?;
                     `,
                     [data],
                     function (error, results) {
@@ -108,7 +108,7 @@ module.exports = {
                 if (err) throw err;
                 connection.query(
                     `
-                    SELECT * FROM activity WHERE id = ?;
+                    SELECT * FROM activites WHERE id = ?;
                     `,
                     [id],
                     function (error, results) {
@@ -128,7 +128,7 @@ module.exports = {
                             };
                             connection.query(
                                 `
-                            UPDATE activity SET ? WHERE id = ?;
+                            UPDATE activites SET ? WHERE id = ?;
                             `,
                                 [dataEdit, id],
                                 function (error, resultsUpdate) {
@@ -160,7 +160,7 @@ module.exports = {
             if (err) throw err;
             connection.query(
                 `
-                SELECT * FROM activity WHERE id = ?;
+                SELECT * FROM activites WHERE id = ?;
                 `,
                 [id],
                 function (error, results) {
@@ -174,7 +174,7 @@ module.exports = {
                     } else {
                         connection.query(
                             `
-                            DELETE FROM activity WHERE id = ?;
+                            DELETE FROM activites WHERE id = ?;
                             `,
                             [id],
                             function (error, results) {
