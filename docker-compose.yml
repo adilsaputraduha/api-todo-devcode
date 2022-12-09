@@ -1,0 +1,48 @@
+version: "1.1"
+services:
+    nodejs:
+        build:
+            context: .
+        image: adilsaputraduha/api-todo-devcode
+        networks:
+            - frontend
+            - backend
+        environment:
+            - MYSQL_HOST=adil-mysql-app
+            - MYSQL_USER=adiluser
+            - MYSQL_PASSWORD=adilpass
+            - MYSQL_DBNAME=adil_db
+        volumes:
+            - ./www/:/var/www/html/
+        ports:
+            - "3030:3030"
+        container_name: adil-nodejs-app
+    mysql:
+        image: mysql:5.7
+        networks:
+            - backend
+        ports:
+            - "3306:3306"
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_USER=adiluser
+            - MYSQL_PASSWORD=adilpass
+            - MYSQL_DATABASE=adil_db
+        container_name: adil-mysql-app
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:4.7
+        depends_on:
+            - mysql
+        networks:
+            - backend
+        ports:
+            - "3031:80"
+        environment:
+            - PMA_HOST=adil-mysql-app
+            - PMA_PORT=3306
+        volumes:
+            - /sessions
+        container_name: adil-phpmyadmin-app
+networks:
+    frontend:
+    backend:
