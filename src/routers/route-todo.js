@@ -1,6 +1,10 @@
 const router = require("express").Router();
 const { activity, todo } = require("../controllers");
 
+router.get("/", function (req, res) {
+    res.write(`API Todo-List Devcode Worked!`);
+});
+
 router.get("/activity-groups", activity.getAllActivity);
 
 router.get("/activity-groups/:id", activity.getActivityById);
